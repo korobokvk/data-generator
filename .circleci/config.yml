@@ -35,5 +35,12 @@ jobs:
 
       # run tests!
       - run: yarn test
-      - run: docker build -t data-generator .
-      - run: docker push korobokvk/data-generator:tagname
+      - run:
+          name: "Install Docker"
+          command: |
+            sudo apt install docker.io
+      - run: 
+          name: "Build and push image"
+          command: |
+            docker build -t data-generator .
+            docker push korobokvk/data-generator:$TAG
