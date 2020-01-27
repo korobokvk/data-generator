@@ -38,7 +38,7 @@ jobs:
       - run:
           name: "Install Docker"
           command: |
-            sudo apt install docker.io
+            apk add docker-cli
       - run: 
           name: "Build and push image"
           command: |
