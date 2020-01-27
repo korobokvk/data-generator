@@ -42,5 +42,5 @@ jobs:
       - run: 
           name: "Build and push image"
           command: |
-            docker build -t data-generator .
+            docker build -t data-generator:$TAG .
             docker push korobokvk/data-generator:$TAG
