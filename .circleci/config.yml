@@ -46,5 +46,5 @@ jobs:
       - run: 
           name: "Build and push image"
           command: |
-            docker build -t data-generator .
-            docker push korobokvk/data-generator
+            sudo docker build -t data-generator .
+            sudo docker push korobokvk/data-generator
