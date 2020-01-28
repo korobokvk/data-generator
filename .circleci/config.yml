@@ -46,8 +46,7 @@ jobs:
       - run: 
           name: "Build and push image"
           command: |
-            echo $DOCKER_USER
-            service docker.io restart
-            sudo docker build -t data-generator .
-            sudo docker login --username $DOCKER_USER --password $DOCKER_PASS
-            sudo docker push korobokvk/data-generator
+            echo $DOCKER_USER |
+            sudo docker build -t data-generator . |
+            sudo docker login --username "$DOCKER_USER" --password "$DOCKER_PASS" |
+            sudo docker push korobokvk/data-generator |
