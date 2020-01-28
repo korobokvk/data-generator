@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/circleci/node:10.16
+      - image: circleci/node:10.16
     working_directory: ~/repo
     steps:
       - checkout
