@@ -2,9 +2,19 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/buildpack-deps:stretch
+      - image: circleci/circleci/node:10.16
+    working_directory: ~/repo
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
   build:
     environment:
@@ -27,7 +37,7 @@ jobs:
       - run:
           name: Publish Docker Image to Docker Hub
           command: |
-            docker login --username "$DOCKER_USER" --password "$DOCKER_PASS" | sudo docker push  $IMAGE_NAME:latest
+            echo "$DOCKER_USER" | docker login --username "$DOCKER_USER" --password "$DOCKER_PASS" | sudo docker push  $IMAGE_NAME:latest
 workflows:
   version: 2
   build-master:
