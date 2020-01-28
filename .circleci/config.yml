@@ -31,7 +31,7 @@ jobs:
         - run:
             name: Publish Docker Image to Docker Hub
             command: |
-            sudo docker login --username "$DOCKER_USER" --password "$DOCKER_PASS" | sudo docker push  $IMAGE_NAME:latest
+              docker login --username "$DOCKER_USER" --password "$DOCKER_PASS" | sudo docker push  $IMAGE_NAME:latest
   
   workflows:
     version: 2
