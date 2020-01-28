@@ -6,6 +6,7 @@ version: 2
 jobs:
   build:
     docker:
+      context: DOCKER_
       # specify the version you desire here
       - image: circleci/node:10.16
 
@@ -47,4 +48,5 @@ jobs:
           name: "Build and push image"
           command: |
             sudo docker build -t data-generator .
+            sudo docker login --username $DOCKER_USER --password $DOCKER_PASS
             sudo docker push korobokvk/data-generator
