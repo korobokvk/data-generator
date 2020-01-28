@@ -39,8 +39,8 @@ jobs:
           command: |
             echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin
             docker images
-            docker tag latest $IMAGE_NAME
-            docker push $IMAGE_NAME:latest
+            echo $IMAGE_NAME
+            docker push korobokvk/$IMAGE_NAME:latest
 workflows:
   version: 2
   build-master:
